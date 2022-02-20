@@ -1,0 +1,20 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const objectId = mongoose.Types.ObjectId;
+//TODO validate schema
+
+let order_schema = mongoose.Schema({
+    order_id: {type: objectId, required: true},
+    buyer_id: {type: objectId, required: true},
+    seller_id: {type: objectId, required: true},
+    date:String,
+    product_id: {type: objectId, required: true},
+    otp_code: String,
+    isConfirmed: Boolean,
+    total_price:{
+        type:Schema.Types.Decimal128,
+        required:true
+    }
+})
+
+module.exports = mongoose.model('order_schema', order_schema, "order");
